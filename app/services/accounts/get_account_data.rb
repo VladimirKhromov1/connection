@@ -8,6 +8,7 @@ class Accounts::GetAccountData
   def call
     accounts.map do |account|
       {
+        id: account.id,
         email: account.email,
         username: account&.username,
         firstName: account&.first_name,

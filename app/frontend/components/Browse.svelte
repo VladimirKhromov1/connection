@@ -1,13 +1,73 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
     import type {Account} from "../store/AccountStore";
 
     export let accounts: Account
+
+
+    console.log(document.getElementById("slides"))
+
 </script>
 
-{#each accounts as account, index }
-    <div class="wel-{index}">{account.email}</div>
-{/each}
+<ul id="slides">
+    {#each accounts as account, index }
+        <li class="slide" id="uniq-{index}">{account.email}</li>
+    {/each}
+</ul>
+
+<button class="controls" id="decline" >Decline</button>
+<button class="controls" id="approve">Approve</button>
 
 <style>
+    #slides {
+        position: relative;
+        height: 300px;
+        padding: 0px;
+        margin: 0px;
+        list-style-type: none;
+    }
 
+    .slide {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: 1;
+
+        -webkit-transition: opacity 1s;
+        -moz-transition: opacity 1s;
+        -o-transition: opacity 1s;
+        transition: opacity 1s;
+    }
+
+    .showing {
+        opacity: 1;
+        z-index: 2;
+    }
+
+    .slide {
+        font-size: 40px;
+        padding: 40px;
+        box-sizing: border-box;
+        background: #333;
+        color: #fff;
+    }
+
+    .slide:nth-of-type(1) {
+        background: red;
+    }
+    .slide:nth-of-type(2) {
+        background: orange;
+    }
+    .slide:nth-of-type(3) {
+        background: green;
+    }
+    .slide:nth-of-type(4) {
+        background: blue;
+    }
+    .slide:nth-of-type(5) {
+        background: purple;
+    }
 </style>
