@@ -4,10 +4,11 @@
   <% if account_signed_in? %>
     <nav class="my-2 my-md-0 mr-md-3">
       <%= link_to 'My Matches', "#", class: "text-dark mr-3" %>
-      <%= link_to 'Settings', "#", class: "text-dark mr-3" %>
+      <%= link_to 'Browse', browse_path, class: "text-dark mr-3" %>
     </nav>
 
-    <%= link_to "Sign out", destroy_account_session_path, method: :delete, class: "btn btn-secondary mr-2" %>
+    <%= link_to "Sign out", destroy_account_session_path, data: { turbo_method: :delete } %>
+
   <% else %>
     <nav class="my-2 my-md-0 mr-md-3">
       <a class="p-2 text-dark" href="#">Features</a>
@@ -16,7 +17,7 @@
       <a class="p-2 text-dark" href="#">Pricing</a>
     </nav>
 
-    <%= link_to "Sign in", new_account_password_path, class: "btn btn-secondary mr-2" %>
+    <%= link_to "Sign in", new_account_session_path, class: "btn btn-secondary mr-2" %>
     <%= link_to "Sign up", new_account_registration_path, class: "btn btn-outline-primary" %>
   <% end %>
 </div>
