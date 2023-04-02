@@ -1,4 +1,4 @@
-class GetAccountData
+class Accounts::GetAccountData
   include Callable
 
   def initialize(accounts:)

@@ -12,6 +12,7 @@ gem 'puma', '~> 5.0'
 gem 'vite_rails'
 gem "view_component", require: "view_component/engine"
 gem "devise"
+gem 'pry', '~> 0.13.1'
 
 gem 'bootstrap',  '~>4.3.1'
 # Use SCSS for stylesheets

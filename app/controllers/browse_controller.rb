@@ -1,6 +1,6 @@
 class BrowseController < ApplicationController
   def browse
-    @users = GetAccountData.call(accounts: Account.all)
+    @users = Accounts::GetAccountData.call(accounts: Account.where.not(id: current_account.id))
   end
 
   def approve
