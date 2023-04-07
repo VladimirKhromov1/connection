@@ -1,4 +1,6 @@
 <script lang="ts">
+    import Fa from 'svelte-fa'
+    import { faTimesCircle,faHeart } from '@fortawesome/free-solid-svg-icons'
     import { onMount } from 'svelte';
     import type {Account} from "../store/AccountStore";
 
@@ -22,18 +24,26 @@
     {/each}
 </ul>
 
-<button class="controls" id="decline" >Decline</button>
-<button class="controls" id="approve">Approve</button>
+<div class="slide-controls">
+  <span id="decline" on:click={decline}><Fa icon={faTimesCircle} size="4x" /></span>
+  <span id="approve" on:click={approve}><Fa icon={faHeart} size="4x"/></span>
+</div>
 
 <style>
+    .slide-controls {
+        width: 100%;
+        text-align: center;
+    }
     #slides {
-        width: 50vw;
-        height: 50vh;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        transition: opacity 0.1s ease-in-out;
+       position: relative;
+       height : 400px;
+       padding: 0px;
+       margin-left: 200px;
+       margin-right: 200px;
+       list-style-type: none;
+    }
+    #decline {
+        margin-right: 30px;
     }
 
     .slide {
