@@ -41,7 +41,7 @@ const viewComponentCSSModules = import.meta.globEager('../../components/**/*_com
 // ActiveStorage.start()
 //
 // // Import all channels.
-// const channels = import.meta.globEager('./**/*_channel.js')
+const channels = import.meta.globEager('./**/*_channel.js')
 
 // Example: Import a stylesheet in app/frontend/index.css
 // import '~/index.css'

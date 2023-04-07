@@ -4,14 +4,21 @@
 
     export let accounts: Account
 
+    $: index = 0
+    $: select = accounts[index]
+   const approve = () => {
+     index = index + 1
+   }
 
-    console.log(document.getElementById("slides"))
+   const decline = () => {
+     index = index + 1
+   }
 
 </script>
 
 <ul id="slides">
-    {#each accounts as account, index }
-        <li class="slide" id="uniq-{index}">{account.email}</li>
+    {#each accounts as account }
+        <li class="slide" class:showing={account == select}>{account.email}</li>
     {/each}
 </ul>
 
@@ -20,11 +27,13 @@
 
 <style>
     #slides {
+        width: 50vw;
+        height: 50vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
         position: relative;
-        height: 300px;
-        padding: 0px;
-        margin: 0px;
-        list-style-type: none;
+        transition: opacity 0.1s ease-in-out;
     }
 
     .slide {
@@ -53,21 +62,5 @@
         box-sizing: border-box;
         background: #333;
         color: #fff;
-    }
-
-    .slide:nth-of-type(1) {
-        background: red;
-    }
-    .slide:nth-of-type(2) {
-        background: orange;
-    }
-    .slide:nth-of-type(3) {
-        background: green;
-    }
-    .slide:nth-of-type(4) {
-        background: blue;
-    }
-    .slide:nth-of-type(5) {
-        background: purple;
     }
 </style>
