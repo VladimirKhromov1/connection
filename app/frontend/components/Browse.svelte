@@ -14,12 +14,12 @@
     let dislike = false
     $: select = accounts[index]
     $: prev = accounts[index - 1]
-    $: url = accounts[index].photo
+    $: url = accounts[index]?.photo
    const approve = () => {
      like = true
      clickApprove = true
      index = index + 1
-     setTimeout(() => (like = false), 200)
+     setTimeout(() => (like = false), 260)
      setTimeout(() => (clickApprove = false), 700)
      console.log(index)
    }
