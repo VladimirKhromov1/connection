@@ -13,6 +13,7 @@ class Accounts::GetAccountData
         username: account&.username,
         firstName: account&.first_name,
         lastName: account&.last_name,
+        photo: avatar_path(account: account),
       }
     end
   end
@@ -20,4 +21,20 @@ class Accounts::GetAccountData
   private
 
   attr_reader :accounts
+
+  def avatar_path(account:)
+    if account&.avatar&.blob.nil?
+      ''
+    else
+      resized_image = MiniMagick::Image.read(account.avatar.download)
+      resized_image.resize("600x600!")
+
+      account.avatar.attach(
+        io: File.open(resized_image.path),
+        filename: account.avatar.filename,
+        content_type: account.avatar.content_type)
+
+      Rails.application.routes.url_helpers.rails_blob_url(account.avatar.blob, Rails.application.config.action_mailer.default_url_options)
+    end
+  end
 end

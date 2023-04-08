@@ -21,6 +21,9 @@ gem 'sass-rails', '>= 6'
 # gem 'jbuilder', '~> 2.7'
 gem "haml"
 gem "aws-sdk-s3", require: false
+gem "shrine", "~> 3.0"
+gem "image_processing", ">= 1.2"
+
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -32,6 +35,7 @@ gem "aws-sdk-s3", require: false
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'haml-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
