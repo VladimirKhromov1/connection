@@ -1,5 +1,6 @@
 class Accounts::GetAccountData
   include Callable
+  include ActionView::Helpers::AssetUrlHelper
 
   def initialize(accounts:)
     @accounts = accounts
@@ -24,7 +25,7 @@ class Accounts::GetAccountData
 
   def avatar_path(account:)
     if account&.avatar&.blob.nil?
-      ''
+      'http://localhost:3000/default.png'
     else
       resized_image = MiniMagick::Image.read(account.avatar.download)
       resized_image.resize("600x600!")

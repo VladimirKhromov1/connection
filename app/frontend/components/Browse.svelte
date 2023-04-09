@@ -1,7 +1,7 @@
 <script lang="ts">
     import { fade, fly } from 'svelte/transition';
     import Fa from 'svelte-fa'
-    import { faTimesCircle,faHeart } from '@fortawesome/free-solid-svg-icons'
+    import { faTimesCircle,faHeart, faMapMarker } from '@fortawesome/free-solid-svg-icons'
     import { onMount } from 'svelte';
     import type {Account} from "../store/AccountStore";
 
@@ -37,27 +37,28 @@
 
 <div class="gen-container">
 <div class="slides">
-    {#each accounts as account }
-        <span class="like" class:showing={like} transition:fade>Like!</span>
-        <span class="dislike" class:showing={dislike} transition:fade>Dislike!</span>
+    {#if index < accounts.length}
+        {#each accounts as account }
+            <span class="like" class:showing={like} transition:fade>Like!</span>
+            <span class="dislike" class:showing={dislike} transition:fade>Dislike!</span>
             <div class="flip-card" class:showing={account == select} class:rotate-left={clickDecline && account == prev}  class:rotate-right={clickApprove && account == prev} out:fade>
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        <img src={url} alt="Avatar" style="width:600px;height:600px;">
+                        <img src={url} style="width:600px;height:600px;">
                     </div>
                     <div class="flip-card-back">
-                        <h1>John Doe</h1>
-                        <p>Architect & Engineer</p>
+                        <h1>{account.firstName} {account.lastName}</h1>
+                        <Fa icon={faMapMarker}  /> <h2>Location</h2>
                         <p>We love that guy</p>
                     </div>
                 </div>
             </div>
-    {/each}
-</div>
-
-<div class="slide-controls">
-  <span class="decline" on:click={decline}><Fa icon={faTimesCircle} size="4x" /></span>
-  <span class="approve" on:click={approve}><Fa icon={faHeart} size="4x"/></span>
+        {/each}
+        <div class="slide-controls">
+            <span class="decline" on:click={decline}><Fa icon={faTimesCircle} size="4x" /></span>
+            <span class="approve" on:click={approve}><Fa icon={faHeart} size="4x"/></span>
+        </div>
+     {/if}
 </div>
 
 </div>
