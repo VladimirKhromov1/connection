@@ -3,11 +3,11 @@ class BrowseController < ApplicationController
   def browse
     licked_account_ids = Like.where(account_id: current_account.id).map(&:liked_account_id)
     licked_account_ids << current_account.id
-    @accounts = Accounts::GetAccountData.call(accounts: Account.where.not(id: licked_account_ids))
+    @accounts = Accounts::GetAccountData.call(accounts: Account.where.not(id: licked_account_ids), variant: :slide)
   end
 
   def matches
-    @matches = Accounts::GetAccountData.call(accounts: current_account.matches)
+    @matches = Accounts::GetAccountData.call(accounts: current_account.matches, variant: :match)
   end
 
   def approve

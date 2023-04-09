@@ -7,4 +7,5 @@ export type Account = {
     firstName: string | '';
     lastName: string | '';
     photo: string | '';
+    age: string | '';
 }
