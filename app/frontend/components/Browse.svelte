@@ -1,5 +1,4 @@
 <script lang="ts">
-    import axios from 'axios';
     import { fade, fly } from 'svelte/transition';
     import Fa from 'svelte-fa'
     import { faTimesCircle,faHeart, faMapMarker } from '@fortawesome/free-solid-svg-icons'

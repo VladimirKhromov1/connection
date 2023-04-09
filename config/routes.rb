@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   get "browse" => "browse#browse", as: :browse
   post "approve/:id" => "browse#approve", as: :approve_user
+  get "/matches" => "browse#matches", as: :matches
   post "decline/:id" => "browse#decline", as: :decline_user
 end

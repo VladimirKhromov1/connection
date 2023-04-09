@@ -6,6 +6,10 @@ class BrowseController < ApplicationController
     @accounts = Accounts::GetAccountData.call(accounts: Account.where.not(id: licked_account_ids))
   end
 
+  def matches
+    @matches = Accounts::GetAccountData.call(accounts: current_account.matches)
+  end
+
   def approve
     account_id = params[:id]
 
