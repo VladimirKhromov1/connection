@@ -1,4 +1,5 @@
 <script lang="ts">
+    import axios from 'axios';
     import { fade, fly } from 'svelte/transition';
     import Fa from 'svelte-fa'
     import { faTimesCircle,faHeart, faMapMarker } from '@fortawesome/free-solid-svg-icons'
@@ -16,12 +17,15 @@
     $: prev = accounts[index - 1]
     $: url = accounts[index]?.photo
    const approve = () => {
+     var url = "http://localhost:3000/approve/" + select.id;
+       fetch(url, {
+           method: 'POST',
+       })
      like = true
      clickApprove = true
      index = index + 1
      setTimeout(() => (like = false), 260)
      setTimeout(() => (clickApprove = false), 700)
-     console.log(index)
    }
 
    const decline = () => {
