@@ -34,8 +34,9 @@ const viewComponentCSSModules = import.meta.globEager('../../components/**/*_com
 
 // Example: Load Rails libraries in Vite.
 //
-// import * as Turbo from '@hotwired/turbo'
-// Turbo.start()
+
+import Turbolinks from 'turbolinks'
+Turbolinks.start()
 //
 // import ActiveStorage from '@rails/activestorage'
 // ActiveStorage.start()

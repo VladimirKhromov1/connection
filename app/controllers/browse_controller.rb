@@ -8,6 +8,7 @@ class BrowseController < ApplicationController
 
   def matches
     @matches = Accounts::GetAccountData.call(accounts: current_account.matches, variant: :match)
+    @current_account_id = current_account.id
   end
 
   def approve

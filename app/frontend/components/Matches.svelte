@@ -4,6 +4,7 @@
     import { faMapMarker } from '@fortawesome/free-solid-svg-icons'
 
     export let accounts: Account
+    export let current_account_id: number
 </script>
 
 <div class="d-flex align-items-start">
@@ -23,7 +24,7 @@
     </div>
 
     <div class="buttons">
-      <a class="btn btn-primary slide" href="/browse" target="_blank">Chat with {account.username}</a>
+      <a class="btn btn-primary slide" href="/show/{current_account_id}/{account.id}" target="_blank">Chat with {account.username}</a>
     </div>
 
     </div>

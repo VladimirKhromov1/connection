@@ -11,7 +11,7 @@ export default defineConfig({
     RubyPlugin(),
     svelte({
       preprocess: sveltePreprocess({
-        ...image(),
+
       }),
     }),
   ],
