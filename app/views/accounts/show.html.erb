@@ -1,18 +1,49 @@
-<div>
-  <h2><%=@sender.username %> contacting <%=@receiver.username%></h2>
-  <div id="messages">
-    <% @messages.each do |message| %>
-      <p><%= message.sender.username %>: <%= message.text %></p>
-    <% end %>
+<html>
+<head>
+  <%= stylesheet_link_tag 'messages', media: 'all' %>
+</head>
+<body>
+<div class="card card-danger direct-chat direct-chat-danger">
+  <div class="card-header">
+    <div class="card-tools d-flex">
+      <img src=<%= @partner_avatar_path %> class="contacts-img" />
+      <span class="contacts-name"><%= @receiver.username %></span>
+      <span class="mr-auto"></span>
+        <%= link_to 'My Matches', matches_path, class: "text-dark mr-3" %>
+        <%= link_to 'Browse', browse_path, class: "text-dark mr-3" %>
+        <%= link_to 'Edit account', edit_account_registration_path, class: "text-dark mr-3" %>
+        <%= link_to "Sign out", destroy_account_session_path, data: { turbo_method: :delete } %>
+    </div>
   </div>
+
+  <div class="direct-chat-messages">
+    <div id="messages" class="container-messages">
+      <% @messages.each do |message| %>
+        <% sent_by_me = message.sender == current_account %>
+        <% partner = current_account == message.sender ? message.receiver : message.sender %>
+        <% time = message.created_at.today? ? message.created_at.strftime("%I:%M %P") : message.created_at.strftime("%m/%d/%Y, %H:%M") %>
+        <% profile_picture_path = sent_by_me ? @me_avatar_path : @partner_avatar_path %>
+        <%= render 'messages/message', message: message, sent_by_me: sent_by_me, partner: partner, time: time, picture: profile_picture_path  %>
+      <% end %>
+    </div>
+  </div>
+
 
   <%= form_tag messages_path  do %>
     <div>
-      <%= text_field_tag :message, nil ,  placeholder: 'Type message here...', class: 'form-control', id: 'send'  %>
+      <div class="card-footer">
+        <div class="input-group">
+          <%= text_field_tag :message, nil ,  placeholder: 'Type message here...', class: 'form-control', id: 'send'  %>
+          <span class="input-group-append">
+               <%= submit_tag "Send", id: "submit", class: "btn btn-primary", data: { disable_with: false } %>
+            </span>
+        </div>
+      </div>
       <%= hidden_field_tag "receiver_id", @receiver.id %>
       <%= hidden_field_tag "sender_id", @sender.id %>
       <%= hidden_field_tag "chat_id", @chat_id %>
-      <%= submit_tag "Send", id: "submit", data: { disable_with: false } %>
     </div>
   <% end %>
 </div>
+</body>
+</html>

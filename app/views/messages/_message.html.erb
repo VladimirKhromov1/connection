@@ -1,0 +1,77 @@
+<div class="direct-chat-msg">
+  <% if sent_by_me %>
+    <div class="right">
+      <div class="direct-chat-infos clearfix">
+    <span class="direct-chat-name">
+      <% if sent_by_me %>
+        <span class="float-right">
+        <% if sent_by_me %>
+        me
+      <% else %>
+        <%= partner.username %>
+      <% end %>
+       </span>
+      <% else %>
+        <span class="float-left">
+        <% if sent_by_me %>
+          me
+        <% else %>
+          <%= partner.username %>
+        <% end %>
+        </span>
+      <% end %>
+    </span>
+        <span class="direct-chat-timestamp">
+      <% if sent_by_me %>
+        <span class="float-left"><%= time %></span>
+      <% else %>
+        <span class="float-right"><%= time %></span>
+      <% end %>
+			</span>
+      </div>
+      <img class="direct-chat-img" src=<%= picture %> alt="pic">
+      <div class="direct-chat-text">
+        <div class="d-flex">
+          <span class="mr-auto"><%= message.text %></span>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="left">
+      <div class="direct-chat-infos clearfix">
+    <span class="direct-chat-name">
+      <% if sent_by_me %>
+        <span class="float-right">
+        <% if sent_by_me %>
+        me
+      <% else %>
+        <%= partner.username %>
+      <% end %>
+       </span>
+      <% else %>
+        <span class="float-left">
+        <% if sent_by_me %>
+          me
+        <% else %>
+          <%= partner.username %>
+        <% end %>
+        </span>
+      <% end %>
+    </span>
+        <span class="direct-chat-timestamp">
+      <% if sent_by_me %>
+        <span class="float-left"><%= time %></span>
+      <% else %>
+        <span class="float-right"><%= time %></span>
+      <% end %>
+			</span>
+      </div>
+      <img class="direct-chat-img" src=<%= picture %> alt="pic">
+      <div class="direct-chat-text">
+        <div class="d-flex">
+          <span class="mr-auto"><%= message.text %></span>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

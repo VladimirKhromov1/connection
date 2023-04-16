@@ -13,3 +13,29 @@
  */
 @import "settings";
 @import "bootstrap";
+
+.direct-chat .card-body {
+  overflow-x: hidden;
+  padding: 0;
+  position: relative;
+}
+
+.direct-chat-messages {
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+  overflow: auto;
+  transition: -webkit-transform .5s ease-in-out;
+  transition: transform .5s ease-in-out;
+  transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out;
+}
+
+.contacts-img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+.contacts-name {
+  margin-left: 15px;
+  font-weight: 600;
+}
+
