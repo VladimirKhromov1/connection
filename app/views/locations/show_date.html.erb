@@ -1,0 +1,6 @@
+
+<p> Street: <%= @location.street %></p>
+<p> City: <%= @location.city %></p>
+<p> Country: <%= @location.country %></p>
+<%= image_tag "https://static-maps.yandex.ru/1.x/?ll=#{@location.longitude},#{@location.latitude}&z=16&size=450,450&l=map&pt=#{@location.longitude},#{@location.latitude},pmwtm1" %>
+

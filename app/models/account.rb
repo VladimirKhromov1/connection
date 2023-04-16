@@ -19,4 +19,8 @@ class Account < ApplicationRecord
   has_many :senders, through: :messagee
   has_many :messaged, foreign_key: :sender_id, class_name: 'Message'
   has_many :receivers, through: :messaged
+  has_many :datee, foreign_key: :receiver_id, class_name: 'Location'
+  has_many :creators, through: :datee
+  has_many :dated, foreign_key: :sender_id, class_name: 'Location'
+  has_many :recipients, through: :dated
 end

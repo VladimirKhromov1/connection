@@ -1,0 +1,9 @@
+<%= form_tag locations_path  do %>
+    <%= text_field_tag :street %>
+    <%= text_field_tag :city %>
+    <%= text_field_tag :country %>
+    <%= submit_tag "Send", id: "submit", class: "btn btn-primary", data: { disable_with: false } %>
+    <%= hidden_field_tag "creator_id", @creator.id %>
+    <%= hidden_field_tag "recipient_id", @recipient.id %>
+  </div>
+<% end %>

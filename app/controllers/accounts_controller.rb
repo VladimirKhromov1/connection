@@ -13,6 +13,11 @@ class AccountsController < ApplicationController
     @chat_id = [@sender.id, @receiver.id].sort.join("")
   end
 
+  def date
+    @creator = Account.find(params[:creator_id])
+    @recipient = Account.find(params[:recipient_id])
+  end
+
 
   private
 

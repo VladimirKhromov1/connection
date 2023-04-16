@@ -15,6 +15,8 @@ gem "devise"
 gem 'pry', '~> 0.13.1'
 gem 'redis'
 gem 'turbolinks', '~> 5.2.0'
+gem 'geocoder'
+gem 'nifty-generators'
 
 gem 'bootstrap',  '~>4.3.1'
 # Use SCSS for stylesheets
@@ -65,3 +67,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "mocha", group: :test

@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_15_160955) do
-
+ActiveRecord::Schema[7.0].define(version: 2023_04_16_185751) do
   create_table "accounts", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "username", default: "", null: false
@@ -20,10 +19,10 @@ ActiveRecord::Schema.define(version: 2023_04_15_160955) do
     t.string "age", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
@@ -33,7 +32,7 @@ ActiveRecord::Schema.define(version: 2023_04_15_160955) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -46,7 +45,7 @@ ActiveRecord::Schema.define(version: 2023_04_15_160955) do
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -59,17 +58,29 @@ ActiveRecord::Schema.define(version: 2023_04_15_160955) do
   create_table "likes", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "account_id"
     t.integer "liked_account_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_likes_on_account_id"
+  end
+
+  create_table "locations", charset: "utf8mb4", force: :cascade do |t|
+    t.string "street"
+    t.string "city"
+    t.string "country"
+    t.float "latitude"
+    t.float "longitude"
+    t.integer "creator_id"
+    t.integer "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "messages", charset: "utf8mb4", force: :cascade do |t|
     t.integer "sender_id"
     t.integer "receiver_id"
     t.string "text"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

@@ -25,6 +25,7 @@
 
     <div class="buttons">
       <a class="btn btn-primary slide" href="/show/{current_account_id}/{account.id}" target="_blank">Chat with {account.username}</a>
+      <a class="btn btn-primary slide" href="/date/{current_account_id}/{account.id}" target="_blank">Date with {account.username}</a>
     </div>
 
     </div>

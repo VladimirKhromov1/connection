@@ -123,6 +123,7 @@ GEM
     erubi (1.12.0)
     execjs (2.8.1)
     ffi (1.15.5)
+    geocoder (1.8.1)
     globalid (1.1.0)
       activesupport (>= 5.0)
     haml (6.1.1)
@@ -157,6 +158,8 @@ GEM
     mini_magick (4.12.0)
     mini_mime (1.1.2)
     minitest (5.18.0)
+    mocha (2.0.2)
+      ruby2_keywords (>= 0.0.5)
     msgpack (1.7.0)
     mysql2 (0.5.5)
     net-imap (0.3.4)
@@ -168,6 +171,7 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
+    nifty-generators (0.4.6)
     nio4r (2.5.9)
     nokogiri (1.14.3-x86_64-linux)
       racc (~> 1.4)
@@ -228,6 +232,7 @@ GEM
     rexml (3.2.5)
     ruby-vips (2.1.4)
       ffi (~> 1.12)
+    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -303,11 +308,14 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+  geocoder
   haml
   haml-rails
   image_processing (>= 1.2)
   listen (~> 3.3)
+  mocha
   mysql2 (~> 0.5)
+  nifty-generators
   pry (~> 0.13.1)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
