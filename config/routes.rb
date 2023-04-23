@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "public#home"
 
+  get "dates" => "locations#dates", as: :dates
   get "show/:sender_id/:receiver_id" => "accounts#show", as: :show
   get "date/:creator_id/:recipient_id" => "locations#date"
   get "show_date/:date_id" => "locations#show_date", as: :show_date

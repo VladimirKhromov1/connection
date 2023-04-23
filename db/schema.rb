@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_16_185751) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_23_181423) do
   create_table "accounts", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "username", default: "", null: false
@@ -73,6 +73,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_16_185751) do
     t.integer "recipient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "responsed", default: false
+    t.time "time_of_date"
   end
 
   create_table "messages", charset: "utf8mb4", force: :cascade do |t|

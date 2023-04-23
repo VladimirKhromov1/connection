@@ -5,11 +5,13 @@
 
     export let accounts: Account
     export let current_account_id: number
+    export let waitAnswerIds: number[]
+    export let waitAnswerFromMeIds: number[]
 </script>
 
 <div class="d-flex align-items-start">
 {#each accounts as account }
-    <div class="elements">
+    <div class="elements item">
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="flip-card-front">
@@ -24,8 +26,14 @@
     </div>
 
     <div class="buttons">
-      <a class="btn btn-primary slide" href="/show/{current_account_id}/{account.id}" target="_blank">Chat with {account.username}</a>
-      <a class="btn btn-primary slide" href="/date/{current_account_id}/{account.id}" target="_blank">Date with {account.username}</a>
+      <a class="btn btn-lg btn-primary" href="/show/{current_account_id}/{account.id}" target="_blank">Chat with {account.username}</a>
+      {#if waitAnswerIds.includes(account.id)}
+          <button type="button" class="btn btn-secondary btn-lg" disabled>Wait answer</button>
+      {:else if waitAnswerFromMeIds.includes(account.id)}
+          <button type="button" class="btn btn-secondary btn-lg" disabled>Wait answer from me</button>
+      {:else }
+          <a class="btn btn-lg btn-primary" href="/date/{current_account_id}/{account.id}" target="_blank">Date with {account.username}</a>
+      {/if}
     </div>
 
     </div>
@@ -70,6 +78,13 @@
         height: 100%;
         -webkit-backface-visibility: hidden; /* Safari */
         backface-visibility: hidden;
+    }
+
+    .buttons {
+        display: flex;
+        margin-top: 10rem;
+        width: 86%;
+        justify-content: space-between;
     }
 
     .flip-card-front {

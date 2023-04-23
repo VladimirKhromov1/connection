@@ -2,7 +2,8 @@
     <%= text_field_tag :street %>
     <%= text_field_tag :city %>
     <%= text_field_tag :country %>
-    <%= submit_tag "Send", id: "submit", class: "btn btn-primary", data: { disable_with: false } %>
+    <%= time_field :time_of_date, value: "%H:%M"%>
+    <%= submit_tag "Send", class: "btn btn-primary", data: { disable_with: false } %>
     <%= hidden_field_tag "creator_id", @creator.id %>
     <%= hidden_field_tag "recipient_id", @recipient.id %>
   </div>

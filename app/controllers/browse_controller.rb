@@ -9,6 +9,8 @@ class BrowseController < ApplicationController
   def matches
     @matches = Accounts::GetAccountData.call(accounts: current_account.matches, variant: :match)
     @current_account_id = current_account.id
+    @wait_answer = Location.where(creator_id: current_account.id, responsed: false).map { |location| location.recipient_id }
+    @wait_answer_from_me = Location.where(recipient_id: current_account.id, responsed: false ).map { |location| location.creator_id }
   end
 
   def approve
