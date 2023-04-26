@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   post "approve/:id" => "browse#approve", as: :approve_user
   get "/matches" => "browse#matches", as: :matches
   post "decline/:id" => "browse#decline", as: :decline_user
+  get "approve_date/:id" => "locations#approve_date"
+  get "decline_date/:id" => "locations#decline_date"
 end

@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   # GET /locations/1
   def show
   end
@@ -28,8 +29,24 @@ class LocationsController < ApplicationController
   def dates
     locations = Location.where(creator_id: current_account.id).or(Location.where(recipient_id: current_account.id))
     @dates = Locations::GetLocationData.call(locations: locations)
+    @current_account_id = current_account.id
   end
 
+  def approve_date
+    Location.find(params[:id]).update responsed: "approved"
+
+    redirect_to dates_path
+  end
+
+  def decline_date
+    Location.find(params[:id]).update responsed: "declined"
+
+    redirect_to dates_path
+  end
+
+  def destroy
+    @location = Location.find(params[:id])
+  end
   def show_date
     @location = Location.find(params[:date_id])
   end

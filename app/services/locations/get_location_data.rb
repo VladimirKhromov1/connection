@@ -8,6 +8,7 @@ class Locations::GetLocationData
   def call
     locations.map do |location|
       {
+        id: location.id,
         creator: account(location.creator),
         recipient: account(location.recipient),
         responsed: location.responsed,

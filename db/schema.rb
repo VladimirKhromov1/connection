@@ -73,7 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_23_181423) do
     t.integer "recipient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "responsed", default: false
+    t.string "responsed", default: "default"
     t.time "time_of_date"
   end
 
