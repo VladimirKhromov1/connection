@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_23_181423) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_26_205956) do
   create_table "accounts", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "username", default: "", null: false
@@ -53,6 +53,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_23_181423) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "dislikes", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "account_id"
+    t.integer "liked_account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_dislikes_on_account_id"
   end
 
   create_table "likes", charset: "utf8mb4", force: :cascade do |t|
