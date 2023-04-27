@@ -21,7 +21,7 @@ class LocationsController < ApplicationController
   end
 
   def create
-    @location = Location.create(street: params[:street], city: params[:city], country: params[:country], creator_id: params[:creator_id], recipient_id: params[:recipient_id], time_of_date: Time.parse(params[:time_of_date]["{:value=>\"%H:%M\"}"]))
+    @location = Location.create(street: params[:street], city: params[:city], country: params[:country], creator_id: params[:creator_id], recipient_id: params[:recipient_id], time_of_date: DateTime.parse(params[:time_of_date]["{:value=>\"%H:%M\"}"]))
 
     redirect_to "/show_date/#{@location.id}", notice: "Location was successfully created."
   end

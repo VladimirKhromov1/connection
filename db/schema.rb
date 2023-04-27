@@ -57,7 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_26_205956) do
 
   create_table "dislikes", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "account_id"
-    t.integer "liked_account_id"
+    t.integer "disliked_account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_dislikes_on_account_id"
@@ -82,7 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_26_205956) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "responsed", default: "default"
-    t.time "time_of_date"
+    t.datetime "time_of_date"
   end
 
   create_table "messages", charset: "utf8mb4", force: :cascade do |t|

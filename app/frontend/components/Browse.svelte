@@ -28,12 +28,15 @@
    }
 
    const decline = () => {
+     var url = "http://localhost:3000/decline/" + select.id;
+       fetch(url, {
+           method: 'POST',
+     })
      dislike = true
      clickDecline = true
      index = index + 1
-     setTimeout(() => (dislike = false), 200)
+     setTimeout(() => (dislike = false), 260)
      setTimeout(() => (clickDecline = false), 700)
-     console.log(index)
    }
 
 </script>

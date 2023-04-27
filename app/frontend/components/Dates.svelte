@@ -5,7 +5,6 @@
     export let dates: Date
     export let сurrentAccountId: number
 
-
 </script>
 
 {#each dates as date}

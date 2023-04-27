@@ -16,18 +16,12 @@ class BrowseController < ApplicationController
   def approve
     account_id = params[:id]
 
-    new_like = Like.new(liked_account_id: account_id)
-    new_like.account_id = current_account.id
-
-    if new_like.save
-      like = Like.where(account_id: account_id, liked_account_id: current_account.id).count
-      @they_like_us = like > 0
-    else
-
-    end
+    Like.create(account_id: current_account.id, liked_account_id: account_id)
   end
 
   def decline
+    account_id = params[:id]
 
+    Dislike.create(account_id: current_account.id, disliked_account_id: account_id)
   end
 end
