@@ -1,0 +1,13 @@
+<%= render "layouts/nav" %>
+<div class="statistics">
+<%= pie_chart @account_hash,
+              class: 'box',
+              options: {
+                title: {
+                  text: 'Your Rating',
+                  left: 'center'
+                },
+                legend: { orient: 'vertical', left: 'left' }
+              }
+%>
+</div>

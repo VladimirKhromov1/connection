@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   post "decline/:id" => "browse#decline", as: :decline_user
   get "approve_date/:id" => "locations#approve_date"
   get "decline_date/:id" => "locations#decline_date"
+  get "/statistics" => "statistics#index", as: :statistics_path
 end

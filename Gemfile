@@ -10,6 +10,7 @@ gem 'mysql2', '~> 0.5'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 gem 'vite_rails'
+gem "rails_charts"
 gem "view_component", require: "view_component/engine"
 gem "devise"
 gem 'pry', '~> 0.13.1'

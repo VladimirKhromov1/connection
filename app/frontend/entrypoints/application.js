@@ -4,6 +4,8 @@
 import 'bootstrap/js/src/collapse'
 import 'bootstrap/js/src/dropdown'
 // import 'bootstrap/js/src/modal'
+import 'chart.js'
+import 'chartkick'
 // import 'bootstrap/js/src/popover'
 import 'bootstrap/js/src/scrollspy'
 // import 'bootstrap/js/src/tab'
@@ -12,6 +14,10 @@ import 'bootstrap/js/src/scrollspy'
 
 import * as bootstrap from 'bootstrap';
 window.bootstrap = bootstrap;
+import * as echarts from 'echarts';
+import 'echarts/theme/dark';
+
+window.echarts = echarts;
 
 import SvelteLoader from '@/global/javascript/svelte_loader'
 

@@ -1,3 +1,3 @@
 //= require turbolinks
-//= require Chart.bundle
-//= require chartkick
+//= require echarts.min.js
+//= require echarts/theme/dark.js
