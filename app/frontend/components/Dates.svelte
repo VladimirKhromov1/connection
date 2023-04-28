@@ -1,9 +1,17 @@
 <script lang="ts">
     import type {Date} from "../store/DateStore";
     import type {Account} from "../store/AccountStore";
+    import {onMount} from "svelte";
 
     export let dates: Date
     export let сurrentAccountId: number
+
+    onMount(async () => {
+        const url = "http://localhost:3000/check_dates/";
+        fetch(url, {
+            method: 'PUT',
+        })
+    });
 
 </script>
 

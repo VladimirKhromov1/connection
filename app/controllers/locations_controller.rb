@@ -21,9 +21,15 @@ class LocationsController < ApplicationController
   end
 
   def create
-    @location = Location.create(street: params[:street], city: params[:city], country: params[:country], creator_id: params[:creator_id], recipient_id: params[:recipient_id], time_of_date: DateTime.parse(params[:time_of_date]["{:value=>\"%H:%M\"}"]))
+    @location = Location.create(street: params[:street], city: params[:city], country: params[:country], creator_id: params[:creator_id], recipient_id: params[:recipient_id], time_of_date: DateTime.parse(params[:time_of_date]["{:value=>\"%H:%M\"}"]).in_time_zone("Minsk"))
 
     redirect_to "/show_date/#{@location.id}", notice: "Location was successfully created."
+  end
+
+  def check_dates
+    Location.where(responsed: "approved").each do |date|
+      date.update responsed: "closed" if Time.now.in_time_zone("Minsk") > date.time_of_date.time_of_date.in_time_zone("Minsk")
+    end
   end
 
   def dates
@@ -33,7 +39,7 @@ class LocationsController < ApplicationController
   end
 
   def approve_date
-    if Time.now.utc > Location.find(params[:id]).time_of_date.utc
+    if Time.now.in_time_zone("Minsk") > Location.find(params[:id]).time_of_date.time_of_date.in_time_zone("Minsk")
       Location.find(params[:id]).update responsed: "closed"
     else
       Location.find(params[:id]).update responsed: "approved"
@@ -43,7 +49,7 @@ class LocationsController < ApplicationController
   end
 
   def decline_date
-    if Time.now.utc > Location.find(params[:id]).time_of_date.utc
+    if Time.now.in_time_zone("Minsk") > Location.find(params[:id]).time_of_date.time_of_date.in_time_zone("Minsk")
       Location.find(params[:id]).update responsed: "closed"
     else
       Location.find(params[:id]).update responsed: "declined"

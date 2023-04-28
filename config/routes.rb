@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   get "approve_date/:id" => "locations#approve_date"
   get "decline_date/:id" => "locations#decline_date"
   get "/statistics" => "statistics#index", as: :statistics_path
+  put "check_dates" => "locations#check_dates"
 end
