@@ -19,7 +19,9 @@
             {/if}
         </section>
         <div class="p-4 text-center border-top">
-            {#if date.responsed == "default" && сurrentAccountId != date.creator.id}
+            {#if date.responsed == "closed"}
+                <button type="button" class="btn btn-danger btn-lg" disabled>Time over</button>
+            {:else if date.responsed == "default" && сurrentAccountId != date.creator.id}
                 <a class="btn btn-success btn-lg accept" href="approve_date/{date.id}">Approve</a>
                 <a class="btn btn-danger btn-lg" href="decline_date/{date.id}">Decline</a>
             {:else if date.responsed == "default" && сurrentAccountId == date.creator.id}

@@ -12,10 +12,10 @@ class LocationsController < ApplicationController
   def date
     @creator = Account.find(params[:creator_id])
     @recipient = Account.find(params[:recipient_id])
-    if Location.find_by(creator_id: @creator.id,recipient_id: @recipient.id).nil?
+    if Location.find_by(creator_id: @creator.id,recipient_id: @recipient.id, responsed: "default").nil?
       @location = Location.new
     else
-      @location = Location.find_by(creator_id: @creator.id,recipient_id: @recipient.id)
+      @location = Location.find_by(creator_id: @creator.id,recipient_id: @recipient.id, responsed: "default")
       redirect_to "/show_date/#{@location.id}"
     end
   end
@@ -33,13 +33,21 @@ class LocationsController < ApplicationController
   end
 
   def approve_date
-    Location.find(params[:id]).update responsed: "approved"
+    if Time.now.utc > Location.find(params[:id]).time_of_date.utc
+      Location.find(params[:id]).update responsed: "closed"
+    else
+      Location.find(params[:id]).update responsed: "approved"
+    end
 
     redirect_to dates_path
   end
 
   def decline_date
-    Location.find(params[:id]).update responsed: "declined"
+    if Time.now.utc > Location.find(params[:id]).time_of_date.utc
+      Location.find(params[:id]).update responsed: "closed"
+    else
+      Location.find(params[:id]).update responsed: "declined"
+    end
 
     redirect_to dates_path
   end
