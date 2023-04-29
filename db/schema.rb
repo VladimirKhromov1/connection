@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_26_205956) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_29_190255) do
   create_table "accounts", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "username", default: "", null: false
@@ -83,6 +83,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_26_205956) do
     t.datetime "updated_at", null: false
     t.string "responsed", default: "default"
     t.datetime "time_of_date"
+    t.string "timezone", default: ""
   end
 
   create_table "messages", charset: "utf8mb4", force: :cascade do |t|

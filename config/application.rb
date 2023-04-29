@@ -11,6 +11,8 @@ module Connection
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.active_record.default_timezone = :local
+    config.active_record.time_zone_aware_attributes = false
 
     # Configuration for the application, engines, and railties goes here.
     #

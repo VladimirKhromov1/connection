@@ -12,7 +12,7 @@ class Locations::GetLocationData
         creator: account(location.creator),
         recipient: account(location.recipient),
         responsed: location.responsed,
-        timeOfDate: location.time_of_date.strftime("%I:%M %P")
+        timeOfDate: Locations::GetTime.call(time: location.time_of_date, coordinates: [location.latitude, location.longitude])[:time].strftime("%I:%M %P %Z")
       }
     end
   end

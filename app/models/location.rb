@@ -1,4 +1,6 @@
 class Location < ApplicationRecord
+  self.skip_time_zone_conversion_for_attributes = [:time_of_date]
+
   belongs_to :creator, class_name: 'Account'
   belongs_to :recipient, class_name: 'Account'
 
