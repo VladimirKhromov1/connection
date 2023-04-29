@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   get "decline_date/:id" => "locations#decline_date"
   get "/statistics" => "statistics#index", as: :statistics_path
   put "check_dates" => "locations#check_dates"
+  get "/top" => "accounts#top", as: :top_path
 end

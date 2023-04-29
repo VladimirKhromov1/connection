@@ -15,13 +15,14 @@ class BrowseController < ApplicationController
 
   def approve
     account_id = params[:id]
-
+    account = Account.find_by(id: account_id)
+    account.update rate: account.rate + 1
     Like.create(account_id: current_account.id, liked_account_id: account_id)
   end
 
   def decline
     account_id = params[:id]
-
+    account.update rate: account.rate - 1
     Dislike.create(account_id: current_account.id, disliked_account_id: account_id)
   end
 end

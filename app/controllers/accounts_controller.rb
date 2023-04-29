@@ -18,6 +18,10 @@ class AccountsController < ApplicationController
     @recipient = Account.find(params[:recipient_id])
   end
 
+  def top
+    @accounts = Accounts::GetAccountData.call(accounts: Account.order(rate: :desc).first(3), variant: :slide)
+  end
+
 
   private
 

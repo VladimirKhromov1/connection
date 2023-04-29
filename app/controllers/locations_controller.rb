@@ -52,6 +52,7 @@ class LocationsController < ApplicationController
   def approve_date
     location = Location.find(params[:id])
     location.update approved: true
+    location.creator.update rate: location.creator.rate + 1
     time_hash = Locations::GetTime.call(time: Time.now, coordinates: [location.latitude, location.longitude])
     # current time that we change in time of place where will date
     current_time_in_date_timezone = time_hash[:time]
@@ -68,6 +69,7 @@ class LocationsController < ApplicationController
 
   def decline_date
     location = Location.find(params[:id])
+    location.creator.update rate: location.creator.rate - 1
     location.update declined: true
     time_hash = Locations::GetTime.call(time: Time.now, coordinates: [location.latitude, location.longitude])
     # current time that we change in time of place where will date
