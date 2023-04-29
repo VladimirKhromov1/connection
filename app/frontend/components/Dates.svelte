@@ -7,7 +7,7 @@
     export let сurrentAccountId: number
 
     onMount(async () => {
-        const url = "http://localhost:3000/check_dates/";
+        const url =  window.location.protocol + "//" + window.location.host + "/check_dates/";
         fetch(url, {
             method: 'PUT',
         })

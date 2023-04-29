@@ -4,10 +4,20 @@
               class: 'box',
               options: {
                 title: {
-                  text: 'Your Rating',
+                  text: 'Your Likes/Dislikes',
                   left: 'center'
                 },
                 legend: { orient: 'vertical', left: 'left' }
               }
 %>
+  <%= pie_chart @dates_hash,
+                class: 'box',
+                options: {
+                  title: {
+                    text: 'Reaction on dates created by you',
+                    left: 'center'
+                  },
+                  legend: { orient: 'vertical', left: 'left' }
+                }
+  %>
 </div>

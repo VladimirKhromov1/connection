@@ -16,7 +16,7 @@
     $: prev = accounts[index - 1]
     $: url = accounts[index]?.photo
    const approve = () => {
-     var url = "http://localhost:3000/approve/" + select.id;
+     const url = window.location.protocol + "//" + window.location.host + "/" + select.id;
        fetch(url, {
            method: 'POST',
        })
@@ -28,7 +28,7 @@
    }
 
    const decline = () => {
-     var url = "http://localhost:3000/decline/" + select.id;
+       const url = window.location.protocol + "//" + window.location.host + "/" + select.id;
        fetch(url, {
            method: 'POST',
      })
