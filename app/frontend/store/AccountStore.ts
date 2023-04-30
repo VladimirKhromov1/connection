@@ -8,4 +8,6 @@ export type Account = {
     lastName: string | '';
     photo: string | '';
     age: string | '';
+    country: string | '';
+    city: string | '';
 }

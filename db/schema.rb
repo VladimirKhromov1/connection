@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_29_222550) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_30_090306) do
   create_table "accounts", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "username", default: "", null: false
@@ -24,6 +24,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_29_222550) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "rate", precision: 10, default: "0"
+    t.string "country", default: "", null: false
+    t.string "city", default: "", null: false
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end

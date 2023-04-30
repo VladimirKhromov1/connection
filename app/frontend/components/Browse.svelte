@@ -4,6 +4,7 @@
     import { faTimesCircle,faHeart, faMapMarker } from '@fortawesome/free-solid-svg-icons'
     import { onMount } from 'svelte';
     import type {Account} from "../store/AccountStore";
+    import AccountData from "./AccountData.svelte";
 
     export let accounts: Account
 
@@ -53,9 +54,7 @@
                         <img src={url} style="width:600px;height:600px;">
                     </div>
                     <div class="flip-card-back">
-                        <h1>{account.firstName} {account.lastName}</h1>
-                        <Fa icon={faMapMarker}  /> <h2>Location</h2>
-                        <p>We love that guy</p>
+                        <AccountData account={account}/>
                     </div>
                 </div>
             </div>

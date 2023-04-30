@@ -21,6 +21,8 @@ class Accounts::GetAccountData
         lastName: account&.last_name,
         photo: avatar_path(account: account),
         age: account.age,
+        country: account.country,
+        city: account.city
       }
     end
   end

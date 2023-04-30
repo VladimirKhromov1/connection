@@ -29,6 +29,16 @@
   </div>
 
   <div class="field">
+    <%= f.label :country %><br />
+    <%= f.text_field :country, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city, autofocus: true %>
+  </div>
+
+  <div class="field">
     <div class="gravatar_edit">
       <%= f.file_field :avatarmatches,
                        placeholder: 'Upload picture',

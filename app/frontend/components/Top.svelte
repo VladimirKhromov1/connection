@@ -2,6 +2,7 @@
     import type {Account} from "../store/AccountStore";
     import {faMapMarker} from "@fortawesome/free-solid-svg-icons";
     import Fa from 'svelte-fa'
+    import AccountData from "./AccountData.svelte";
 
     export let accounts: Account
 
@@ -16,9 +17,7 @@
                         <img src={account.photo} style="width:400px;height:400px;">
                     </div>
                     <div class="flip-card-back">
-                        <h1>{account.firstName} {account.lastName}</h1>
-                        <Fa icon={faMapMarker}  /> <h2>Location</h2>
-                        <p>{account.age}</p>
+                        <AccountData account={account}/>
                     </div>
                 </div>
             </div>
