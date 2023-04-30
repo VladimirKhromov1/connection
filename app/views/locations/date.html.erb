@@ -1,9 +1,12 @@
 <%= form_tag locations_path  do %>
-    <%= text_field_tag :street %>
-    <%= text_field_tag :city %>
-    <%= text_field_tag :country %>
-    <%= time_field :time_of_date, value: "%H:%M"%>
-    <%= submit_tag "Send", class: "btn btn-primary", data: { disable_with: false } %>
+  <div class="date-container-1">
+    <h1 style="margin-left: 8.5rem; margin-bottom: 4rem;">Date</h1>
+    <div class="date-condition"><span class="date-text" style="margin-right: 6rem">Street: </span><span><%= text_field_tag :street %></span></div>
+    <div class="date-condition"><span class="date-text" style="margin-right: 7.7rem">City: </span><span><%= text_field_tag :city %></span></div>
+    <div class="date-condition"><span class="date-text" style="margin-right: 4.5rem">Country: </span><span><%= text_field_tag :country %></span></div>
+    <div class="date-condition"><span class="date-text" style="margin-right: 0.7rem">Time of date: </span><span><%= time_field :time_of_date, value: "%H:%M"%></span></div>
+    <%= submit_tag "Save Date", class: "btn btn-primary btn-lg btn-block date-button", data: { disable_with: false } %>
+    <a class="btn btn-primary btn-lg btn-block" href="/matches">Back</a>
     <%= hidden_field_tag "creator_id", @creator.id %>
     <%= hidden_field_tag "recipient_id", @recipient.id %>
   </div>

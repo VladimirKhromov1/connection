@@ -1,7 +1,10 @@
-
-<p> Street: <%= @location.street %></p>
-<p> City: <%= @location.city %></p>
-<p> Country: <%= @location.country %></p>
-<p> Time of date: <%= @location.time_of_date.strftime("%I:%M %P") %> <%= @timezone %></p>
-<%= image_tag "https://static-maps.yandex.ru/1.x/?ll=#{@location.longitude},#{@location.latitude}&z=16&size=450,450&l=map&pt=#{@location.longitude},#{@location.latitude},pmwtm1" %>
-
+<div class="date-container">
+  <div class="date-instructions">
+  <div><span class="dating-text"> Street: </span> <span><%= @location.street %></span></div>
+  <div><span class="dating-text"> City: </span> <span><%= @location.city %></span></div>
+  <div><span class="dating-text"> Country: </span> <span><%= @location.country %></span></div>
+  <div><span class="dating-text"> Time of date: </span> <span><%= @location.time_of_date.strftime("%I:%M %P") %> <%= @timezone %></span></div>
+  </div>
+  <div><%= image_tag "https://static-maps.yandex.ru/1.x/?ll=#{@location.longitude},#{@location.latitude}&z=16&size=450,450&l=map&pt=#{@location.longitude},#{@location.latitude},pmwtm1" %></div>
+  <a class="btn btn-primary btn-lg" style="margin-top: 2rem; width: 28rem" href="/dates">Back</a>
+</div>

@@ -31,7 +31,7 @@
       {:else if waitAnswerFromMeIds.includes(account.id)}
           <button type="button" class="btn btn-secondary btn-lg" disabled>Wait answer from me</button>
       {:else }
-          <a class="btn btn-lg btn-primary" href="/date/{current_account_id}/{account.id}" target="_blank">Date with {account.username}</a>
+          <a class="btn btn-lg btn-primary" href="/date/{current_account_id}/{account.id}">Date with {account.username}</a>
       {/if}
     </div>
 
