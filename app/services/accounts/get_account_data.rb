@@ -37,13 +37,6 @@ class Accounts::GetAccountData
     elsif (account.avatar.metadata['width'] == 400 && account.avatar.metadata['height'] == 400) || (account.avatar.metadata['width'] == 600 && account.avatar.metadata['height'] == 600)
       Rails.application.routes.url_helpers.rails_blob_url(account.avatar.blob, Rails.application.config.action_mailer.default_url_options)
     else
-      resized_image = MiniMagick::Image.read(account.avatar.download)
-      resized_image.resize(VARIANTS[variant])
-
-      account.avatar.attach(
-        io: File.open(resized_image.path),
-        filename: account.avatar.filename,
-        content_type: account.avatar.content_type)
 
       Rails.application.routes.url_helpers.rails_blob_url(account.avatar.blob, Rails.application.config.action_mailer.default_url_options)
     end
